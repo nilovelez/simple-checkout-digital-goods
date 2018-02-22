@@ -12,21 +12,7 @@ function SCDG_remove_fields($fields) {
 	//}
 
     $disabled_fields_array = get_option('wcdg_checkout_fields');
-    $disabled_fields_array = array(
-    	'billing_company',
-        'billing_address_1',
-        'billing_address_2',
-        'billing_city',
-        'billing_postcode',
-        'billing_country',
-        'billing_state',
-        'billing_phone',
-        'order_comments',
-        'billing_address_2',
-        'billing_postcode',
-        'billing_company',
-        'billing_city'
-    );
+    
 
 
     $temp_product = array();
