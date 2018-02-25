@@ -1,0 +1,134 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Simple Checkout for Digital Goods\n"
+"POT-Creation-Date: 2018-02-23 11:11+0100\n"
+"PO-Revision-Date: 2018-02-23 11:33+0100\n"
+"Last-Translator: Nilo Velez <nilovelez@gmail.com>\n"
+"Language-Team: Nilo Velez <nilovelez@gmail.com>\n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.0.6\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: simple-checkout-digital-goods.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#. Plugin Name of the plugin/theme
+#: admin.php:4 simple-checkout-digital-goods.php:41
+msgid "Simple Checkout for Digital Goods"
+msgstr "Simple Checkout for Digital Goods"
+
+#: admin.php:7
+msgid ""
+"There are some cases where you don't need all the billing fields of a "
+"digital product checkout. This plugin lets you remove some fields of the "
+"checkout page when all the products in the cart are downloadable or virtual."
+msgstr ""
+"Algunas veces no necesitas todos los campos de facturación para el pago de "
+"un producto digital. Este plugin te permite quitar algunos campos de la "
+"página de finalizar compra cuando todos los productos que hay en el carrito "
+"son descargables o virtuales."
+
+#: admin.php:8
+msgid ""
+"Please keep in mind that you will need those fields for invoicing if you are "
+"charging for the products."
+msgstr ""
+"Ten en cuenta que esos campos son necesarios a la hora de emitir facturas si "
+"estás cobrando por esos productos."
+
+#: admin.php:10
+msgid "Check the fields you want to remove from the checkout page"
+msgstr "Marca los campos que quieres quitar de la página de finalizar pedido"
+
+#: admin.php:23
+msgid "Field to hide"
+msgstr "Campo a ocultar"
+
+#: admin.php:24
+msgid "Visible label"
+msgstr "Etiqueta visible"
+
+#: admin.php:32
+msgid "Show more details"
+msgstr "Mostrar más detalles"
+
+#: admin.php:34
+msgid "Explanation"
+msgstr "Explicación"
+
+#: simple-checkout-digital-goods.php:26
+msgid "Company name"
+msgstr "Nombre de la empresa"
+
+#: simple-checkout-digital-goods.php:27
+msgid "Country"
+msgstr "País"
+
+#: simple-checkout-digital-goods.php:28
+msgid "Street address"
+msgstr "Dirección de la calle"
+
+#: simple-checkout-digital-goods.php:29
+msgid "Apartment, suite, unit etc. (optional)"
+msgstr "Apartamento, habitación, etc. (opcional)"
+
+#: simple-checkout-digital-goods.php:30
+msgid "Town / City"
+msgstr "Localidad / Ciudad"
+
+#: simple-checkout-digital-goods.php:31
+msgid "State / County"
+msgstr "Región / Provincia"
+
+#: simple-checkout-digital-goods.php:32
+msgid "Postcode / ZIP"
+msgstr "Código postal"
+
+#: simple-checkout-digital-goods.php:33
+msgid "Phone number."
+msgstr "Número de teléfono."
+
+#: simple-checkout-digital-goods.php:34
+msgid "Order notes"
+msgstr "Notas del pedido"
+
+#: simple-checkout-digital-goods.php:42
+msgid "Simple Checkout"
+msgstr "Pago simplificado"
+
+#: simple-checkout-digital-goods.php:194
+msgid "Options saved!"
+msgstr "¡Opciones guardadas!"
+
+#: simple-checkout-digital-goods.php:197
+msgid "Error saving configuration to database."
+msgstr "Error al guardar la configuración a base de datos."
+
+#: simple-checkout-digital-goods.php:209
+msgid "No changes were needed."
+msgstr "No se necesitaban cambios."
+
+#. Description of the plugin/theme
+msgid ""
+"Removes billing address fields when you only have downloadable and virtual "
+"products in the cart."
+msgstr ""
+"Elimina los campos de dirección de facturación cuando sólo tienes productos "
+"descargables y virtuales en el carrito."
+
+#. Author of the plugin/theme
+msgid "Nilo Velez"
+msgstr "Nilo Velez"
+
+#. Author URI of the plugin/theme
+msgid "https://www.nilovelez.com"
+msgstr "https://www.nilovelez.com"

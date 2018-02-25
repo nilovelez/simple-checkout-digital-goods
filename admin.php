@@ -1,10 +1,13 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
-<div class="wrap">
+<div class="wrap" style="max-width: 1000px;">
 
 	<h1><?php _e('Simple Checkout for Digital Goods','simple-checkout-digital-goods') ?></h1>
 	<hr class="wp-header-end">
 	
-	<p><?php _e('WordPress has a los of code just to keep backward compatiblity or enable optional features. You can disable most of it and save some time from each page request while making your installation safer','simple-checkout-digital-goods') ?></p>
+	<p><?php _e('There are some cases where you don\'t need all the billing fields of a digital product checkout. This plugin lets you remove some fields of the checkout page when all the products in the cart are downloadable or virtual.','simple-checkout-digital-goods') ?></p>
+	<p><?php _e('Please keep in mind that you will need those fields for invoicing if you are charging for the products.','simple-checkout-digital-goods') ?></p>
+
+	<h2><?php _e('Check the fields you want to remove from the checkout page','simple-checkout-digital-goods') ?></h2>
 	
 	<div class="feature-section">
 		<form id="scdg-options" action="" method="POST">
@@ -17,8 +20,8 @@
 			<thead>
 				<tr>
 					<td class="manage-column column-cb check-column " ><input type="checkbox" name="check_all" id="scdg_checkall_fld" <?php if ($this->all_options_checked) echo 'checked' ?>></td>
-					<th style="width: 20%;" class="column-title manage-column column-primary"><?php _e('Campo','simple-checkout-digital-goods') ?></th>
-					<th><?php _e('Texto visible','machete') ?></th>
+					<th style="width: 20%;" class="column-title manage-column column-primary"><?php _e('Field to hide','simple-checkout-digital-goods') ?></th>
+					<th><?php _e('Visible label','machete') ?></th>
 				</tr>
 			</thead>
 			<tbody>

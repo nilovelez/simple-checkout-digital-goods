@@ -1,0 +1,126 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: Simple Checkout for Digital Goods\n"
+"POT-Creation-Date: 2018-02-23 11:11+0100\n"
+"PO-Revision-Date: 2018-02-23 11:09+0100\n"
+"Last-Translator: Nilo Velez <nilovelez@gmail.com>\n"
+"Language-Team: Nilo Velez <nilovelez@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.6\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: simple-checkout-digital-goods.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#. Plugin Name of the plugin/theme
+#: admin.php:4 simple-checkout-digital-goods.php:41
+msgid "Simple Checkout for Digital Goods"
+msgstr ""
+
+#: admin.php:7
+msgid ""
+"There are some cases where you don't need all the billing fields of a "
+"digital product checkout. This plugin lets you remove some fields of the "
+"checkout page when all the products in the cart are downloadable or virtual."
+msgstr ""
+
+#: admin.php:8
+msgid ""
+"Please keep in mind that you will need those fields for invoicing if you are "
+"charging for the products."
+msgstr ""
+
+#: admin.php:10
+msgid "Check the fields you want to remove from the checkout page"
+msgstr ""
+
+#: admin.php:23
+msgid "Field to hide"
+msgstr ""
+
+#: admin.php:24
+msgid "Visible label"
+msgstr ""
+
+#: admin.php:32
+msgid "Show more details"
+msgstr ""
+
+#: admin.php:34
+msgid "Explanation"
+msgstr ""
+
+#: simple-checkout-digital-goods.php:26
+msgid "Company name"
+msgstr ""
+
+#: simple-checkout-digital-goods.php:27
+msgid "Country"
+msgstr ""
+
+#: simple-checkout-digital-goods.php:28
+msgid "Street address"
+msgstr ""
+
+#: simple-checkout-digital-goods.php:29
+msgid "Apartment, suite, unit etc. (optional)"
+msgstr ""
+
+#: simple-checkout-digital-goods.php:30
+msgid "Town / City"
+msgstr ""
+
+#: simple-checkout-digital-goods.php:31
+msgid "State / County"
+msgstr ""
+
+#: simple-checkout-digital-goods.php:32
+msgid "Postcode / ZIP"
+msgstr ""
+
+#: simple-checkout-digital-goods.php:33
+msgid "Phone number."
+msgstr ""
+
+#: simple-checkout-digital-goods.php:34
+msgid "Order notes"
+msgstr ""
+
+#: simple-checkout-digital-goods.php:42
+msgid "Simple Checkout"
+msgstr ""
+
+#: simple-checkout-digital-goods.php:194
+msgid "Options saved!"
+msgstr ""
+
+#: simple-checkout-digital-goods.php:197
+msgid "Error saving configuration to database."
+msgstr ""
+
+#: simple-checkout-digital-goods.php:209
+msgid "No changes were needed."
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Removes billing address fields when you only have downloadable and virtual "
+"products in the cart."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Nilo Velez"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://www.nilovelez.com"
+msgstr ""
