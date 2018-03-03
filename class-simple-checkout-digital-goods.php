@@ -29,7 +29,7 @@ class SIMPLE_CHECKOUT_DIGITAL_GOODS {
 	 * Class constructor.
 	 */
 	public function __construct() {
-		$this->disabled_fields_array = array(
+		$this->excluded_fields_array = array(
 			'billing_company'   => __( 'Company name', 'woocommerce' ),
 			'billing_country'   => __( 'Country', 'woocommerce' ),
 			'billing_address_1' => __( 'Street address', 'woocommerce' ),
@@ -71,11 +71,7 @@ class SIMPLE_CHECKOUT_DIGITAL_GOODS {
 				check_admin_referer( 'scdg_save_options' );
 
 				/* Sanitization not needed, values are checked against a valid options array */
-				if ( isset( $_POST['optionEnabled'] ) ) {
-					$this->save_settings( $_POST['optionEnabled'] );
-				} else {
-					$this->save_settings();
-				}
+				$this->save_settings( $_POST );
 			}
 		} else {
 			$this->read_settings();
@@ -92,13 +88,15 @@ class SIMPLE_CHECKOUT_DIGITAL_GOODS {
 
 		global $woocommerce, $product;
 
-		if ( $this->settings->only_free && intval( preg_replace( '#[^\d.]#', '', $woocommerce->cart->get_cart_total() ) ) === 0 ) {
-			return $fields;
+		if ( 'no' === $this->settings['include_non_free'] ) {
+			if ( intval( preg_replace( '#[^\d.]#', '', $woocommerce->cart->get_cart_total() ) ) > 0 ) {
+				return $fields;
+			}
 		}
 
-		$disabled_fields_array = array_diff( array_keys( $this->disabled_fields_array ), $this->settings );
+		$excluded_fields = array_diff( array_keys( $this->excluded_fields_array ), $this->settings['excluded_fields'] );
 
-		if ( count( $disabled_fields_array ) === 0 ) {
+		if ( count( $excluded_fields ) === 0 ) {
 			return $fields;
 		}
 
@@ -121,7 +119,7 @@ class SIMPLE_CHECKOUT_DIGITAL_GOODS {
 			return $fields;
 		}
 
-		foreach ( $disabled_fields_array as $field ) {
+		foreach ( $excluded_fields as $field ) {
 			if ( 'order_comments' === $field ) {
 				unset( $fields['order']['order_comments'] );
 			} else {
@@ -137,16 +135,18 @@ class SIMPLE_CHECKOUT_DIGITAL_GOODS {
 	 */
 	public function submenu_page_callback() {
 		$this->read_settings();
-		$this->all_options_checked = ( count( $this->settings ) === 0 ) ? true : false;
+		$this->all_options_checked = ( count( $this->settings['excluded_fields'] ) === 0 ) ? true : false;
 		require plugin_dir_path( __FILE__ ) . 'admin-content.php';
 	}
 
 	/**
-	Returns an array with the plugin settings, defaults to blank array.
+	 * Returns an array with the plugin settings:
+	 * excluded_fields: fields NOT to remove from the checkout page
+	 * include_non_free: yes|no Remove fields in non-free orders?
 	 */
 	protected function read_settings() {
 		$this->settings = array(
-			'excluded_fields' => get_option( 'scdg_settings', array() ),
+			'excluded_fields'  => get_option( 'scdg_settings', array() ),
 			'include_non_free' => get_option( 'scdg_include_non_free', 'no' ),
 		);
 	}
@@ -160,33 +160,60 @@ class SIMPLE_CHECKOUT_DIGITAL_GOODS {
 	protected function save_settings( $options = array(), $silent = false ) {
 		$this->read_settings();
 
-		$options = array_intersect( $options, array_keys( $this->disabled_fields_array ) );
-		$options = array_values( array_diff( array_keys( $this->disabled_fields_array ), $options ) );
+		$no_changes = true;
 
-		$num_options = count( $options );
-		if ( $num_options > 0 ) {
-			if ( $this->is_equal_array( $this->settings, $options ) ) {
-				if ( ! $silent ) {
-					$this->save_no_changes_notice();
+		if ( 'yes' === $options['include_non_free'] ) {
+			if ( 'no' === $this->settings['include_non_free'] ) {
+				if ( update_option( 'scdg_include_non_free', 'yes' ) ) {
+					$this->settings['include_non_free'] = 'yes';
+					$no_changes = false;
+				} else {
+					if ( ! $silent ) {
+						$this->save_error_notice();
+					}
+					return false;
 				}
-				return true;
 			}
+		} else {
+			if ( 'yes' === $this->settings['include_non_free'] ) {
+				if ( delete_option( 'scdg_include_non_free' ) ) {
+					$this->settings['include_non_free'] = 'no';
+					$no_changes = false;
+				} else {
+					if ( ! $silent ) {
+						$this->save_error_notice();
+					}
+					return false;
+				}
+			}
+		}
 
-			if ( update_option( 'scdg_settings', $options ) ) {
-				$this->settings = $options;
-				if ( ! $silent ) {
-					$this->save_success_notice();
+		if ( isset( $options['optionEnabled'] ) ) {
+			$excluded_fields = array_intersect( $options['optionEnabled'], array_keys( $this->excluded_fields_array ) );
+			$excluded_fields = array_values( array_diff( array_keys( $this->excluded_fields_array ), $excluded_fields ) );
+		} else {
+			$excluded_fields = array();
+		}
+
+		$num_excluded_fields = count( $excluded_fields );
+		if ( $num_excluded_fields > 0 ) {
+			if ( ! $this->is_equal_array( $this->settings['excluded_fields'], $excluded_fields ) ) {
+				if ( update_option( 'scdg_settings', $excluded_fields ) ) {
+					$this->settings['excluded_fields'] = $excluded_fields;
+					if ( ! $silent ) {
+						$this->save_success_notice();
+					}
+					return true;
+				} else {
+					if ( ! $silent ) {
+						$this->save_error_notice();
+					}
+					return false;
 				}
-				return true;
-			} else {
-				if ( ! $silent ) {
-					$this->save_error_notice();
-				}
-				return false;
 			}
-		} elseif ( count( $this->settings ) > 0 ) {
+		} elseif ( count( $this->settings['excluded_fields'] ) > 0 ) {
 			if ( delete_option( 'scdg_settings' ) ) {
-				$this->settings = array();
+				$this->settings['excluded_fields'] = array();
 				if ( ! $silent ) {
 					$this->save_success_notice();
 				}
@@ -199,8 +226,10 @@ class SIMPLE_CHECKOUT_DIGITAL_GOODS {
 			}
 		}
 
-		if ( ! $silent ) {
+		if ( ! $silent && $no_changes ) {
 			$this->save_no_changes_notice();
+		} else {
+			$this->save_success_notice();
 		}
 		return true;
 	}

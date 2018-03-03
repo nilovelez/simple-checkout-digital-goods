@@ -32,13 +32,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<label>
 							<input name="include_non_free" value="no" type="radio"
 							<?php checked( 'no', $this->settings['include_non_free'], true ); ?>>
-							<strong><?php esc_html_e( 'Only free orderrs', 'simple-checkout-digital-goods' ); ?></strong> - <?php esc_html_e( 'WordPress works as usual', 'simple-checkout-digital-goods' ); ?>
+							<strong><?php esc_html_e( 'Remove only from free orders', 'simple-checkout-digital-goods' ); ?></strong> - <?php esc_html_e( 'Billing fields will be removed only if the cart total is zero.', 'simple-checkout-digital-goods' ); ?>
 						</label><br>
 
 						<label>
 							<input name="include_non_free" value="yes" type="radio"
 							<?php checked( 'yes', $this->settings['include_non_free'], true ); ?>>
-							<strong><?php esc_html_e( 'Remove from all orders', 'simple-checkout-digital-goods' ); ?></strong> - <?php esc_html_e( 'Site closed. All pages have a meta robots noindex, nofollow', 'simple-checkout-digital-goods' ); ?><br><span style="color: #ff0000"><?php esc_html_e( 'Please keep in mind that you will need those fields for invoicing if you are charging for the products.', 'simple-checkout-digital-goods' ); ?></span>
+							<strong><?php esc_html_e( 'Remove from all orders', 'simple-checkout-digital-goods' ); ?></strong> - <?php esc_html_e( 'The shipping fields will be removed from all orders, including those that are not free.', 'simple-checkout-digital-goods' ); ?><br><span style="color: #ff0000"><?php esc_html_e( 'Please keep in mind that you will need billing fields for invoicing if you are charging for the products.', 'simple-checkout-digital-goods' ); ?></span>
 						</label><br>
 
 					</fieldset></td>
@@ -60,9 +60,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 				</tr>
 			</thead>
 			<tbody>
-			<?php foreach ( $this->disabled_fields_array as $option_slug => $option_title ) { ?>
+			<?php foreach ( $this->excluded_fields_array as $option_slug => $option_title ) { ?>
 				<tr>
-					<th scope="row" class="check-column"><input type="checkbox" name="optionEnabled[]" value="<?php echo esc_attr( $option_slug ); ?>" id="<?php echo esc_attr( $option_slug . '_fld' ); ?>" <?php checked( false, in_array( $option_slug, $this->settings, true ), true ); ?>></th>
+					<th scope="row" class="check-column"><input type="checkbox" name="optionEnabled[]" value="<?php echo esc_attr( $option_slug ); ?>" id="<?php echo esc_attr( $option_slug . '_fld' ); ?>" <?php checked( false, in_array( $option_slug, $this->settings['excluded_fields'], true ), true ); ?>></th>
 					<td class="column-title column-primary"><strong><?php echo esc_html( $option_slug ); ?></strong>
 					<button type="button" class="toggle-row"><span class="screen-reader-text"><?php esc_html_e( 'Show more details', 'simple-checkout-digital-goods' ); ?></span></button>
 					</td>

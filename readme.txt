@@ -15,11 +15,7 @@ Removes billing address fields from the checkout page when you only have downloa
 
 There are some cases where you don't need all the billing fields of a digital product checkout. This plugin lets you remove some fields of the checkout page when all the products in the cart are downloadable or virtual.
 
-Please keep in mind that you will need those fields for invoicing if you are charging for the products.
-
-
-Check the fields you want to remove from the checkout page.
-
+Since version 1.2, the default behaviour is to remove billing fields only from free orders (those where the cart total is zero). You have the option to remove billing fields from all orders, but keep in mind that you will need those fields for invoicing if you are charging for the products.
 
 == Installation ==
 
@@ -33,6 +29,10 @@ Check the fields you want to remove from the checkout page.
 2. Configuration panel
 
 == Changelog ==
+
+= 1.2 =
+* Added option to remove fields only from free orders
+* Code refactor to adhere to WordPress coding standards
 
 = 1.1.3 = 
 * Added missing "settings" link
