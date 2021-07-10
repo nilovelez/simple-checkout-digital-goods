@@ -2,14 +2,14 @@
 /**
  * Plugin Name: WooCommerce Simple Checkout for Digital Goods
  * Description: Removes billing address fields from the checkout page when you only have downloadable and virtual products in the cart.
- * Version: 1.2
+ * Version: 1.2.1
  * Author: Nilo Velez
  * Author URI: https://www.nilovelez.com
  * Text Domain: simple-checkout-digital-goods
  * Domain Path: /languages
  *
- * WC requires at least: 2.2
- * WC tested up to: 3.3.3
+ * WC requires at least: 4.0
+ * WC tested up to: 5.4
  * License: GPLv2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  *

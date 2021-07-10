@@ -3,7 +3,7 @@ Contributors: nilovelez
 Donate link: https://www.paypal.me/nilovelez
 Tags: woocommerce, checkout, payment
 Requires at least: 4.6
-Tested up to: 4.9.4
+Tested up to: 5.8
 Requires PHP: 5.6
 Stable tag: trunk
 License: GPLv2 or later
@@ -29,6 +29,10 @@ Since version 1.2, the default behaviour is to remove billing fields only from f
 2. Configuration panel
 
 == Changelog ==
+
+= 1.2.1 =
+* Tested up to WordPress 4.8
+* Tested up tp WooCommerce 5.4
 
 = 1.2 =
 * Added option to remove fields only from free orders
